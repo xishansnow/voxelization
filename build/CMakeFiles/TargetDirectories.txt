@@ -1,0 +1,10 @@
+/bigdata/Voxelization/voxelization/build/CMakeFiles/voxelizer.dir
+/bigdata/Voxelization/voxelization/build/CMakeFiles/voxelizer_tests.dir
+/bigdata/Voxelization/voxelization/build/CMakeFiles/voxelization_demo.dir
+/bigdata/Voxelization/voxelization/build/CMakeFiles/test.dir
+/bigdata/Voxelization/voxelization/build/CMakeFiles/edit_cache.dir
+/bigdata/Voxelization/voxelization/build/CMakeFiles/rebuild_cache.dir
+/bigdata/Voxelization/voxelization/build/CMakeFiles/list_install_components.dir
+/bigdata/Voxelization/voxelization/build/CMakeFiles/install.dir
+/bigdata/Voxelization/voxelization/build/CMakeFiles/install/local.dir
+/bigdata/Voxelization/voxelization/build/CMakeFiles/install/strip.dir

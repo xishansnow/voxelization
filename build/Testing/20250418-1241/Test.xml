@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="(empty)"
+	BuildStamp="20250418-1241-Experimental"
+	Name="(empty)"
+	Generator="ctest-3.31.2"
+	CompilerName=""
+	CompilerVersion=""
+	OSName="Linux"
+	Hostname="pcHome"
+	OSRelease="6.6.75-2-MANJARO"
+	OSVersion="#1 SMP PREEMPT_DYNAMIC Mon Feb  3 17:53:46 UTC 2025"
+	OSPlatform="x86_64"
+	Is64Bits="1"
+	VendorString="GenuineIntel"
+	VendorID="Intel Corporation"
+	FamilyID="6"
+	ModelID="158"
+	ModelName="Intel(R) Core(TM) i7-7700K CPU @ 4.20GHz"
+	ProcessorCacheSize="8192"
+	NumberOfLogicalCPU="8"
+	NumberOfPhysicalCPU="4"
+	TotalVirtualMemory="0"
+	TotalPhysicalMemory="15931"
+	LogicalProcessorsPerPhysical="2"
+	ProcessorClockFrequency="4500.21"
+	>
+	<Testing>
+		<StartDateTime>Apr 18 20:41 HKT</StartDateTime>
+		<StartTestTime>1744980074</StartTestTime>
+		<TestList/>
+		<EndDateTime>Apr 18 20:41 HKT</EndDateTime>
+		<EndTestTime>1744980074</EndTestTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Testing>
+</Site>

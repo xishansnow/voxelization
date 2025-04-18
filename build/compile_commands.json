@@ -1,0 +1,56 @@
+[
+{
+  "directory": "/bigdata/Voxelization/voxelization/build",
+  "command": "/usr/bin/g++-12 -I/bigdata/Voxelization/voxelization/include -I/usr/include/eigen3 -g -std=c++14 -o CMakeFiles/voxelizer.dir/src/core/voxel_grid.cpp.o -c /bigdata/Voxelization/voxelization/src/core/voxel_grid.cpp",
+  "file": "/bigdata/Voxelization/voxelization/src/core/voxel_grid.cpp",
+  "output": "CMakeFiles/voxelizer.dir/src/core/voxel_grid.cpp.o"
+},
+{
+  "directory": "/bigdata/Voxelization/voxelization/build",
+  "command": "/usr/bin/g++-12 -I/bigdata/Voxelization/voxelization/include -I/usr/include/eigen3 -g -std=c++14 -o CMakeFiles/voxelizer.dir/src/voxelizer/voxelizer.cpp.o -c /bigdata/Voxelization/voxelization/src/voxelizer/voxelizer.cpp",
+  "file": "/bigdata/Voxelization/voxelization/src/voxelizer/voxelizer.cpp",
+  "output": "CMakeFiles/voxelizer.dir/src/voxelizer/voxelizer.cpp.o"
+},
+{
+  "directory": "/bigdata/Voxelization/voxelization/build",
+  "command": "/usr/bin/g++-12 -I/bigdata/Voxelization/voxelization/include -I/usr/include/eigen3 -g -std=c++14 -o CMakeFiles/voxelizer.dir/src/voxelizer/box_voxelizer.cpp.o -c /bigdata/Voxelization/voxelization/src/voxelizer/box_voxelizer.cpp",
+  "file": "/bigdata/Voxelization/voxelization/src/voxelizer/box_voxelizer.cpp",
+  "output": "CMakeFiles/voxelizer.dir/src/voxelizer/box_voxelizer.cpp.o"
+},
+{
+  "directory": "/bigdata/Voxelization/voxelization/build",
+  "command": "/usr/bin/g++-12 -I/bigdata/Voxelization/voxelization/include -I/usr/include/eigen3 -g -std=c++14 -o CMakeFiles/voxelizer.dir/src/storage/voxelstorage.cpp.o -c /bigdata/Voxelization/voxelization/src/storage/voxelstorage.cpp",
+  "file": "/bigdata/Voxelization/voxelization/src/storage/voxelstorage.cpp",
+  "output": "CMakeFiles/voxelizer.dir/src/storage/voxelstorage.cpp.o"
+},
+{
+  "directory": "/bigdata/Voxelization/voxelization/build",
+  "command": "/usr/bin/g++-12 -I/bigdata/Voxelization/voxelization/include -I/usr/include/eigen3 -g -std=c++14 -o CMakeFiles/voxelizer.dir/src/storage/svo.cpp.o -c /bigdata/Voxelization/voxelization/src/storage/svo.cpp",
+  "file": "/bigdata/Voxelization/voxelization/src/storage/svo.cpp",
+  "output": "CMakeFiles/voxelizer.dir/src/storage/svo.cpp.o"
+},
+{
+  "directory": "/bigdata/Voxelization/voxelization/build",
+  "command": "/usr/bin/g++-12 -I/bigdata/Voxelization/voxelization/include -I/usr/include/eigen3 -g -std=c++14 -o CMakeFiles/voxelizer.dir/src/renderer/voxel_renderer.cpp.o -c /bigdata/Voxelization/voxelization/src/renderer/voxel_renderer.cpp",
+  "file": "/bigdata/Voxelization/voxelization/src/renderer/voxel_renderer.cpp",
+  "output": "CMakeFiles/voxelizer.dir/src/renderer/voxel_renderer.cpp.o"
+},
+{
+  "directory": "/bigdata/Voxelization/voxelization/build",
+  "command": "/usr/bin/g++-12 -DGTEST_LINKED_AS_SHARED_LIBRARY=1 -I/bigdata/Voxelization/voxelization/include -I/usr/include/eigen3 -isystem /home/xishansnow/anaconda3/include -g -std=c++14 -o CMakeFiles/voxelizer_tests.dir/tests/operator_test.cpp.o -c /bigdata/Voxelization/voxelization/tests/operator_test.cpp",
+  "file": "/bigdata/Voxelization/voxelization/tests/operator_test.cpp",
+  "output": "CMakeFiles/voxelizer_tests.dir/tests/operator_test.cpp.o"
+},
+{
+  "directory": "/bigdata/Voxelization/voxelization/build",
+  "command": "/usr/bin/g++-12 -DGTEST_LINKED_AS_SHARED_LIBRARY=1 -I/bigdata/Voxelization/voxelization/include -I/usr/include/eigen3 -isystem /home/xishansnow/anaconda3/include -g -std=c++14 -o CMakeFiles/voxelizer_tests.dir/tests/storage_test.cpp.o -c /bigdata/Voxelization/voxelization/tests/storage_test.cpp",
+  "file": "/bigdata/Voxelization/voxelization/tests/storage_test.cpp",
+  "output": "CMakeFiles/voxelizer_tests.dir/tests/storage_test.cpp.o"
+},
+{
+  "directory": "/bigdata/Voxelization/voxelization/build",
+  "command": "/usr/bin/g++-12 -I/bigdata/Voxelization/voxelization/include -I/usr/include/eigen3 -g -std=c++14 -o CMakeFiles/voxelization_demo.dir/examples/voxelization_demo.cpp.o -c /bigdata/Voxelization/voxelization/examples/voxelization_demo.cpp",
+  "file": "/bigdata/Voxelization/voxelization/examples/voxelization_demo.cpp",
+  "output": "CMakeFiles/voxelization_demo.dir/examples/voxelization_demo.cpp.o"
+}
+]
