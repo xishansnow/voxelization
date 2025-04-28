@@ -84,13 +84,21 @@ set(SOURCES
     src/renderer/voxel_renderer.cpp
     src/renderer/volume_renderer.cpp
 
-
     # Operator files
-    # src/operator/voxel_operator.cpp
-    # src/operator/boolean_operator.cpp
-    # src/operator/filter_operator.cpp
-    # src/operator/morphology_operator.cpp
-    # src/operator/transform_operator.cpp
+    src/operator/SmoothOperator.cpp
+    src/operator/DilateOperator.cpp
+    src/operator/ErodeOperator.cpp
+    src/operator/OffsetOperator.cpp
+    src/operator/UnionOperator.cpp
+    src/operator/IntersectionOperator.cpp
+    src/operator/DifferenceOperator.cpp
+    src/operator/OpeningOperator.cpp
+    src/operator/ClosingOperator.cpp
+    src/operator/DistanceTransformOperator.cpp
+    src/operator/ConnectedComponentsOperator.cpp
+    src/operator/FillOperator.cpp
+    src/operator/InterpolationOperator.cpp
+    # src/operator/grid_operator.cpp
 )
 
 # Header files
@@ -130,11 +138,20 @@ set(HEADERS
     include/renderer/volume_renderer.hpp
 
     # Operator files
-    # include/operator/voxel_operator.hpp
-    # include/operator/boolean_operator.hpp
-    # include/operator/filter_operator.hpp
-    # include/operator/morphology_operator.hpp
-    # include/operator/transform_operator.hpp
+    include/operator/SmoothOperator.hpp
+    include/operator/DilateOperator.hpp
+    include/operator/ErodeOperator.hpp
+    include/operator/OffsetOperator.hpp
+    include/operator/UnionOperator.hpp
+    include/operator/IntersectionOperator.hpp
+    include/operator/DifferenceOperator.hpp
+    include/operator/OpeningOperator.hpp
+    include/operator/ClosingOperator.hpp
+    include/operator/DistanceTransformOperator.hpp
+    include/operator/ConnectedComponentsOperator.hpp
+    include/operator/FillOperator.hpp
+    include/operator/InterpolationOperator.hpp
+    include/operator/grid_operator.hpp
 )
 
 # Create library

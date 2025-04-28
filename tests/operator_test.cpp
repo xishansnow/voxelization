@@ -1,5 +1,18 @@
 #include <gtest/gtest.h>
-#include <operator/grid_operator.hpp>
+#include <operator/grid_operator.hpp>   
+#include <operator/SmoothOperator.hpp>
+#include <operator/DilateOperator.hpp>
+#include <operator/ErodeOperator.hpp>
+#include <operator/OffsetOperator.hpp>
+#include <operator/UnionOperator.hpp>
+#include <operator/IntersectionOperator.hpp>
+#include <operator/DifferenceOperator.hpp>
+#include <operator/OpeningOperator.hpp>
+#include <operator/ClosingOperator.hpp>
+#include <operator/DistanceTransformOperator.hpp>
+#include <operator/ConnectedComponentsOperator.hpp>
+#include <operator/FillOperator.hpp>
+#include <operator/InterpolationOperator.hpp>
 #include <core/voxel_grid.hpp>
 
 namespace VXZ {
@@ -8,7 +21,8 @@ class OperatorTest : public ::testing::Test {
 protected:
     void SetUp() override {
         // Create a simple voxel grid for testing
-        grid_ = VoxelGrid(8, 8, 8);
+        grid_ = VoxelGrid(1.0f, Eigen::Vector3f(0.0f, 0.0f, 0.0f), Eigen::Vector3f(8.0f, 8.0f, 8.0f));
+        
         for (int z = 0; z < 8; ++z) {
             for (int y = 0; y < 8; ++y) {
                 for (int x = 0; x < 8; ++x) {
@@ -27,7 +41,7 @@ protected:
 };
 
 TEST_F(OperatorTest, SmoothOperator) {
-    SmoothOperator op(2, 0.5f);
+    SmoothOperator op(2, 0.0f);
     VoxelGrid original = grid_;
     
     ASSERT_TRUE(op.apply(grid_));
@@ -120,7 +134,8 @@ TEST_F(OperatorTest, OffsetOperator) {
 
 TEST_F(OperatorTest, UnionOperator) {
     // Create another grid
-    VoxelGrid other(8, 8, 8);
+    VoxelGrid other(1.0f, Eigen::Vector3f(0.0f, 0.0f, 0.0f), Eigen::Vector3f(8.0f, 8.0f, 8.0f));
+
     for (int z = 0; z < 8; ++z) {
         for (int y = 0; y < 8; ++y) {
             for (int x = 0; x < 8; ++x) {
@@ -147,7 +162,7 @@ TEST_F(OperatorTest, UnionOperator) {
 
 TEST_F(OperatorTest, IntersectionOperator) {
     // Create another grid
-    VoxelGrid other(8, 8, 8);
+    VoxelGrid other(1.0f, Eigen::Vector3f(0.0f, 0.0f, 0.0f), Eigen::Vector3f(8.0f, 8.0f, 8.0f));
     for (int z = 0; z < 8; ++z) {
         for (int y = 0; y < 8; ++y) {
             for (int x = 0; x < 8; ++x) {
@@ -174,7 +189,7 @@ TEST_F(OperatorTest, IntersectionOperator) {
 
 TEST_F(OperatorTest, DifferenceOperator) {
     // Create another grid
-    VoxelGrid other(8, 8, 8);
+    VoxelGrid other(1.0f, Eigen::Vector3f(0.0f, 0.0f, 0.0f), Eigen::Vector3f(8.0f, 8.0f, 8.0f));
     for (int z = 0; z < 8; ++z) {
         for (int y = 0; y < 8; ++y) {
             for (int x = 0; x < 8; ++x) {
@@ -268,7 +283,7 @@ TEST_F(OperatorTest, DistanceTransformOperator) {
 
 TEST_F(OperatorTest, ConnectedComponentsOperator) {
     // Create a grid with two disconnected components
-    VoxelGrid test_grid(8, 8, 8);
+    VoxelGrid test_grid(1.0f, Eigen::Vector3f(0.0f, 0.0f, 0.0f), Eigen::Vector3f(8.0f, 8.0f, 8.0f));
     for (int z = 0; z < 4; ++z) {
         for (int y = 0; y < 4; ++y) {
             for (int x = 0; x < 4; ++x) {
@@ -312,7 +327,7 @@ TEST_F(OperatorTest, ConnectedComponentsOperator) {
 
 TEST_F(OperatorTest, FillOperator) {
     // Create a grid with a hollow sphere
-    VoxelGrid test_grid(8, 8, 8);
+    VoxelGrid test_grid(1.0f, Eigen::Vector3f(0.0f, 0.0f, 0.0f), Eigen::Vector3f(8.0f, 8.0f, 8.0f));
     for (int z = 0; z < 8; ++z) {
         for (int y = 0; y < 8; ++y) {
             for (int x = 0; x < 8; ++x) {
@@ -347,7 +362,7 @@ TEST_F(OperatorTest, FillOperator) {
 
 TEST_F(OperatorTest, InterpolationOperator) {
     // Create a grid with a linear gradient
-    VoxelGrid test_grid(8, 8, 8);
+    VoxelGrid test_grid(1.0f, Eigen::Vector3f(0.0f, 0.0f, 0.0f), Eigen::Vector3f(8.0f, 8.0f, 8.0f));
     for (int z = 0; z < 8; ++z) {
         for (int y = 0; y < 8; ++y) {
             for (int x = 0; x < 8; ++x) {
@@ -392,6 +407,7 @@ TEST_F(OperatorTest, InterpolationOperator) {
         EXPECT_FALSE(op.apply(test_grid));
     }
 }
+} 
 
 int main(int argc, char** argv) {
     ::testing::InitGoogleTest(&argc, argv);
