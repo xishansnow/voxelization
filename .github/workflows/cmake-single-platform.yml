@@ -18,13 +18,16 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
-      - name: Install glfw, glm, glem, eigen3
+      - name: Install glfw, glm, glem, eigen3...
         run: |
           sudo apt-get update
           sudo apt-get install libglm-dev
           sudo apt-get install libglfw3-dev
           sudo apt-get install libglew-dev
           sudo apt-get install libeigen3-dev
+          sudo apt-get install libgtest-dev
+          sudo apt-get install libtbb-dev
+          sudo apt-get install cmake
       - name: Configure CMake
         # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
         # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
