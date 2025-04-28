@@ -17,7 +17,7 @@ set(OpenGL_GL_PREFERENCE GLVND)
 
 
 list(APPEND CMAKE_PREFIX_PATH "/usr/share/eigen3/cmake")  # Eigen3， 线性代数库
-list(APPEND CMAKE_PREFIX_PATH  "/usr/local/lib/cmake/glfw3") # GLFW, 窗口管理库
+list(APPEND CMAKE_PREFIX_PATH  "/usr/lib/cmake/glfw3") # GLFW, 窗口管理库
 list(APPEND CMAKE_PREFIX_PATH "/usr/share/cmake/glm") # GLM, 图形学所需数学库
 list(APPEND CMAKE_PREFIX_PATH "/usr/lib/cmake/glew") # GLEW，OpenGL扩展库
 
@@ -85,20 +85,7 @@ set(SOURCES
     src/renderer/volume_renderer.cpp
 
     # Operator files
-    src/operator/SmoothOperator.cpp
-    src/operator/DilateOperator.cpp
-    src/operator/ErodeOperator.cpp
-    src/operator/OffsetOperator.cpp
-    src/operator/UnionOperator.cpp
-    src/operator/IntersectionOperator.cpp
-    src/operator/DifferenceOperator.cpp
-    src/operator/OpeningOperator.cpp
-    src/operator/ClosingOperator.cpp
-    src/operator/DistanceTransformOperator.cpp
-    src/operator/ConnectedComponentsOperator.cpp
-    src/operator/FillOperator.cpp
-    src/operator/InterpolationOperator.cpp
-    # src/operator/grid_operator.cpp
+  
 )
 
 # Header files
@@ -137,21 +124,11 @@ set(HEADERS
     include/renderer/voxel_renderer.hpp
     include/renderer/volume_renderer.hpp
 
-    # Operator files
-    include/operator/SmoothOperator.hpp
-    include/operator/DilateOperator.hpp
-    include/operator/ErodeOperator.hpp
-    include/operator/OffsetOperator.hpp
-    include/operator/UnionOperator.hpp
-    include/operator/IntersectionOperator.hpp
-    include/operator/DifferenceOperator.hpp
-    include/operator/OpeningOperator.hpp
-    include/operator/ClosingOperator.hpp
-    include/operator/DistanceTransformOperator.hpp
-    include/operator/ConnectedComponentsOperator.hpp
-    include/operator/FillOperator.hpp
-    include/operator/InterpolationOperator.hpp
+    # Operator files    
     include/operator/grid_operator.hpp
+    include/operator/binary_operator.hpp
+    include/operator/intersection_operator.hpp
+    include/operator/union_operator.hpp    
 )
 
 # Create library
@@ -176,9 +153,8 @@ install(DIRECTORY include/ DESTINATION include)
 
 # Tests
 if(BUILD_TESTS)
-  set(TEST_SOURCES
-        tests/operator_test.cpp
-        tests/storage_test.cpp
+  set(TEST_SOURCES  
+        tests/core/voxel_grid_test.cpp        
     )
 
   add_executable(voxelizer_tests ${TEST_SOURCES})
