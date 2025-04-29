@@ -38,7 +38,7 @@ public:
     }
     
     // Implementation method
-    void voxelize(VoxelGrid& grid) override {}    ;
+    void voxelize(VoxelGrid& grid) override {};
 
 };
 

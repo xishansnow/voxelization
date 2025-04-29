@@ -45,31 +45,9 @@ private:
     std::vector<Eigen::Vector3f> control_points_;
     float radius_;
     int num_segments_;
+    
+
 };
 
-// Factory class for CorridorVoxelizer
-class CorridorVoxelizer {
-public:
-    static std::unique_ptr<VoxelizerBase> create(const std::vector<Eigen::Vector3f>& control_points,
-                                               float radius,
-                                               bool use_gpu = false,
-                                               int num_segments = 100) {
-        if (use_gpu) {
-            return std::make_unique<CorridorVoxelizerGPU>(control_points, radius, num_segments);
-        } else {
-            return std::make_unique<CorridorVoxelizerCPU>(control_points, radius, num_segments);
-        }
-    }
-};
-
-// Factory class for CorridorVoxelizer
-class CorridorVoxelizer {
-public:
-    static std::unique_ptr<VoxelizerBase> create(const std::vector<Eigen::Vector3f>& control_points,
-                                               float radius,
-                                               int num_segments = 100) {
-        return std::make_unique<CorridorVoxelizerCPU>(control_points, radius, num_segments);
-    }
-};
 
 } // namespace VXZ 

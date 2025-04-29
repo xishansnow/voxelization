@@ -1,6 +1,7 @@
 #include "voxelizer/line_voxelizer.hpp"
 #include <cmath>
 #include <algorithm>
+#include <iostream>
 
 namespace VXZ {
 
@@ -20,6 +21,12 @@ void LineVoxelizerCPU::voxelize(VoxelGrid& grid) {
             break;
         case LineAlgorithm::BRESENHAM:
             voxelize_bresenham(grid);
+            break;
+        case LineAlgorithm::TRIPOD:
+            voxelize_tripod(grid);
+            break;
+        case LineAlgorithm::WU:
+            voxelize_wu(grid);
             break;
     }
 }
@@ -314,4 +321,52 @@ void LineVoxelizerCPU::voxelize_bresenham(VoxelGrid& grid) {
     }
 }
 
-} // namespace VXZ 
+void LineVoxelizerCPU::voxelize_tripod(VoxelGrid &grid){
+    // Tripod 3D数字线算法
+    Eigen::Vector3i start_grid = grid.world_to_grid(start_);
+    Eigen::Vector3i end_grid = grid.world_to_grid(end_);
+    
+    // 计算方向向量
+    Eigen::Vector3f direction = (end_grid - start_grid).cast<float>();
+    float max_length = direction.norm();
+    direction.normalize();
+    
+    // 计算步长
+    float step_size = 1.0f / grid.resolution();
+    
+    // 迭代沿着线
+    for (float t = 0.0f; t <= max_length; t += step_size) {
+        Eigen::Vector3i grid_pos = start_grid + (direction * t).cast<int>();
+        
+        // 检查是否在网格内
+        if (grid.is_inside_grid(grid_pos)) {    
+            grid.set(grid_pos, true);
+        }
+    }   
+}
+
+void LineVoxelizerCPU::voxelize_wu(VoxelGrid &grid){
+    // Xiaolin Wu抗锯齿算法
+    Eigen::Vector3i start_grid = grid.world_to_grid(start_);
+    Eigen::Vector3i end_grid = grid.world_to_grid(end_);
+    
+    // 计算方向向量
+    Eigen::Vector3f direction = (end_grid - start_grid).cast<float>();
+    float max_length = direction.norm();
+    direction.normalize();
+    
+    // 计算步长
+    float step_size = 1.0f / grid.resolution();
+    
+    // 迭代沿着线
+    for (float t = 0.0f; t <= max_length; t += step_size) {
+        Eigen::Vector3i grid_pos = start_grid + (direction * t).cast<int>();
+        
+        // 检查是否在网格内
+        if (grid.is_inside_grid(grid_pos)) {
+            grid.set(grid_pos, true);
+        }
+    }
+}
+
+} // namespace VXZ

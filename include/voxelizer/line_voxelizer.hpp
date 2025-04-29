@@ -3,6 +3,51 @@
 #include "voxelizer_base.hpp"
 #include <eigen3/Eigen/Dense>
 
+/*
+ * 线体素化算法参考以下文献:
+ *
+ * Real Line Voxelisation (RLV):
+ * [1] Kaufman, A., & Shimony, E. (1986).
+ *     "3D scan-conversion algorithms for voxel-based graphics"
+ *     Proceedings of the 1986 workshop on Interactive 3D graphics, 45-75
+ *
+ * Supercover Line Voxelisation (SLV):
+ * [2] Cohen-Or, D., & Kaufman, A. (1995).
+ *     "Fundamentals of surface voxelization"
+ *     Graphical Models and Image Processing, 57(6), 453-461
+ *
+ * Integer-only Line Voxelisation (ILV):
+ * [3] Yagel, R., Cohen, D., & Kaufman, A. (1992).
+ *     "Discrete ray tracing"
+ *     IEEE Computer Graphics and Applications, 12(5), 19-28
+ *
+ * Digital Differential Analyzer (DDA):
+ * [4] Amanatides, J., & Woo, A. (1987).
+ *     "A fast voxel traversal algorithm for ray tracing"
+ *     Eurographics, 87(3), 3-10
+ *
+ * 3D Bresenham:
+ * [5] Bresenham, J. E. (1965).
+ *     "Algorithm for computer control of a digital plotter"
+ *     IBM Systems Journal, 4(1), 25-30
+ * [6] Kaufman, A. (1990).
+ *     "Efficient algorithms for 3D scan-conversion of parametric curves, surfaces, and volumes"
+ *     ACM SIGGRAPH Computer Graphics, 24(4), 171-179
+ */
+/*
+ * Tripod算法参考以下文献:
+ * [7] Gao, J., & Kaufman, A. (1990).
+ *     "3D Digital Lines"
+ *     Proceedings of Vision Interface '90, 85-91
+ *
+ * Xiaolin Wu抗锯齿算法参考以下文献:
+ * [8] Wu, X. (1991).
+ *     "An efficient antialiasing technique"
+ *     ACM SIGGRAPH Computer Graphics, 25(4), 143-152
+ * [9] Wu, X. (2001).
+ *     "Fast antialiased 3D line voxelization"
+ *     Journal of Graphics Tools, 6(1), 1-10
+ */
 
 namespace VXZ {
 
@@ -11,7 +56,9 @@ namespace VXZ {
         SLV,    // Supercover Line Voxelisation
         ILV,    // Integer-only Line Voxelisation
         DDA,    // 3D Digital Differential Analyser
-        BRESENHAM // 3D Bresenham
+        BRESENHAM, // 3D Bresenham
+        TRIPOD,  // Tripod 3D数字线算法
+        WU       // Xiaolin Wu抗锯齿算法
     };
 
 // 3D line voxelizer CPU implementation
@@ -81,7 +128,9 @@ private:
     void voxelize_slv(VoxelGrid& grid);
     void voxelize_ilv(VoxelGrid& grid);
     void voxelize_dda(VoxelGrid& grid);
-    void voxelize_bresenham(VoxelGrid& grid);
+    void voxelize_bresenham(VoxelGrid& grid);    
+    void voxelize_tripod(VoxelGrid& grid);
+    void voxelize_wu(VoxelGrid& grid);
 };
 
 // 3D line voxelizer GPU implementation

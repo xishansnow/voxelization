@@ -5,7 +5,7 @@
 #include <vector>
 
 namespace VXZ {
-
+   
 // Triangle structure for mesh representation
 struct Triangle {
     Eigen::Vector3f v0, v1, v2;
@@ -36,10 +36,14 @@ public:
      * @param grid The voxel grid to fill
      */
     void voxelize(VoxelGrid& grid) override;
-    
+
+    bool triangle_voxel_overlap(const Triangle &triangle, const Eigen::Vector3f &voxel_min, const Eigen::Vector3f &voxel_max);
+
 private:
     std::vector<Triangle> triangles_;
-    
+
+    void voxelize_kaufman(VoxelGrid &grid);
+
     // Helper functions
     bool ray_triangle_intersection(const Eigen::Vector3f& origin,
                                  const Eigen::Vector3f& direction,

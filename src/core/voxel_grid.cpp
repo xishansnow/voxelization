@@ -2,6 +2,7 @@
 #include <stdexcept>
 #include <algorithm>
 #include <numeric>
+#include <fstream>
 
 namespace VXZ {
 
@@ -138,4 +139,45 @@ float VoxelGrid::occupancy_rate() const {
     return static_cast<float>(count_occupied()) / data_.size();
 }
 
+void VoxelGrid::save(const std::string &filename) const
+{
+}
+
+VoxelGrid VoxelGrid::load(const std::string &filename)
+{
+    // 从文件读取体素网格参数
+    std::ifstream file;
+
+    
+    file.open(filename, std::ios::binary);
+    
+    if (!file.is_open()) {
+        throw std::runtime_error("无法打开文件: " + filename);
+    }
+
+    // 读取基本参数
+    Eigen::Vector3f min_bounds;
+    Eigen::Vector3f max_bounds;
+    Eigen::Vector3i dimensions;
+    float resolution;
+
+    file.read(reinterpret_cast<char*>(min_bounds.data()), sizeof(min_bounds));
+    file.read(reinterpret_cast<char*>(max_bounds.data()), sizeof(max_bounds));
+    file.read(reinterpret_cast<char*>(dimensions.data()), sizeof(dimensions));
+    file.read(reinterpret_cast<char*>(&resolution), sizeof(resolution));
+   
+    // 创建新的体素网格
+    VoxelGrid grid(resolution, min_bounds, max_bounds);
+
+    // 读取体素数据
+    std::vector<bool> data(dimensions.prod());
+    for (size_t i = 0; i < data.size(); ++i) {
+        char value;
+        file.read(&value, sizeof(char));
+        data[i] = static_cast<bool>(value);
+    }
+
+    grid.data_ = std::move(data);
+    return grid;
+}
 } // namespace VXZ

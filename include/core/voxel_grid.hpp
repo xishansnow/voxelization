@@ -82,7 +82,7 @@ public:
     
     // Save/Load
     void save(const std::string& filename) const;
-    static VoxelGrid load(const std::string& filename);
+    VoxelGrid load(const std::string& filename);
     
 private:
     float resolution_;

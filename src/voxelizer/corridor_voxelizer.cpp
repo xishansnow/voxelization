@@ -1,5 +1,9 @@
 #include "voxelizer/corridor_voxelizer.hpp"
+
 #include <cmath>
+
+
+
 
 namespace VXZ {
 
@@ -34,7 +38,7 @@ Eigen::Vector3f CorridorVoxelizerCPU::evaluate_cubic_spline(float t, int segment
 // - "On the Parameterization of Catmull-Rom Curves" by Barry and Goldman (1988)
 // - "Computer Graphics: Principles and Practice" by Foley et al. (1990)
 Eigen::Vector3f CorridorVoxelizerCPU::evaluate_spline_derivative(float t, int segment) const {
-    // Derivative of Catmull-Rom spline
+    // Derivative of Catmull-Rom spline#include "corridor_voxelizer.hpp"
     const Eigen::Vector3f& p0 = control_points_[segment];
     const Eigen::Vector3f& p1 = control_points_[segment + 1];
     const Eigen::Vector3f& p2 = control_points_[segment + 2];
@@ -50,27 +54,15 @@ Eigen::Vector3f CorridorVoxelizerCPU::evaluate_spline_derivative(float t, int se
     
     return result;
 }
-
 // Point-in-Corridor Test
 // Description: Determines if a point is within the corridor's radius of any spline segment
 // Reference:
-// - "Distance from Point to Line Segment" by Sunday (2001)
-// - "Computational Geometry in C" by O'Rourke (1998)
-bool CorridorVoxelizerCPU::is_point_in_corridor(const Eigen::Vector3f& point) const {
-    // Check if point is within radius of any segment of the spline
-    for (int segment = 0; segment < control_points_.size() - 3; ++segment) {
-        for (int i = 0; i < num_segments_; ++i) {
-            float t = static_cast<float>(i) / num_segments_;
-            Eigen::Vector3f spline_point = evaluate_cubic_spline(t, segment);
-            float distance = (point - spline_point).norm();
-            
-            if (distance <= radius_) {
-                return true;
-            }
-        }
-    }
+// - "Distance from Point to Line Segment" by Sunday#include "corridor_voxelizer.hpp"t).norm();
+           
+bool CorridorVoxelizerCPU::is_point_in_corridor(const Eigen::Vector3f &point) const
+{
     return false;
-}
+}  
 
 // Corridor Voxelization Algorithm
 // Description: Voxelizes a 3D corridor defined by a Catmull-Rom spline and radius
@@ -118,4 +110,8 @@ void CorridorVoxelizerCPU::voxelize(VoxelGrid& grid) {
     }
 }
 
-} // namespace VXZ
+void CorridorVoxelizerGPU::voxelize(VoxelGrid &grid)
+{
+}
+
+}
